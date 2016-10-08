@@ -9,7 +9,7 @@ public class City {
 
     private int id;
     private String name;
-    private List<String> destinations;
+    private String[] destinations = new String[]{};
 
     public int getId() {
         return id;
@@ -27,11 +27,11 @@ public class City {
         this.name = name;
     }
 
-    public List<String> getDestinations() {
+    public String[] getDestinations() {
         return destinations;
     }
 
-    public void setDestinations(List<String> destinations) {
+    public void setDestinations(String[] destinations) {
         this.destinations = destinations;
     }
 
