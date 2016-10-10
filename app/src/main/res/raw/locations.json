@@ -1,4 +1,5 @@
 [
+  {"id" : 0 ,"name" : "-- Eliga una provincia --", "destinations" : ["-- Eliga un destino --"]},
   {"id" : 1 ,"name": "Azua" , "destinations" : ["Playa Blanca", "Playa Tortuguero"]},
   {"id" : 2 ,"name": "Bahoruco" , "destinations" : ["Las Marías", "Villa Jaragua"]},
   {"id" : 3 ,"name": "Barahona" , "destinations" : ["Lago Enriquillo", "Los Patos", "Playa Paraiso"]},
