@@ -1,12 +1,13 @@
 package com.example.darielcruzhdez.tourismapp.main.adapters;
 
 import android.content.Context;
-import android.graphics.Color;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.example.darielcruzhdez.tourismapp.R;
 import com.example.darielcruzhdez.tourismapp.main.models.City;
 
 import java.util.ArrayList;
@@ -75,25 +76,26 @@ public class SpinAdapter extends ArrayAdapter<City> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
-        // I created a dynamic TextView here, but you can reference your own  custom layout for each spinner item
-        TextView label = new TextView(context);
-        label.setTextColor(Color.BLACK);
-        // Then you can get the current item using the values array (Users array) and the current position
-        // You can NOW reference each method you has created in your bean object (User class)
-        label.setText(mCities.get(position).getName());
-
-        // And finally return your dynamic (or custom) view for each spinner item
-        return label;
+        return returnSpinnerView(position, convertView);
     }
 
     @Override
     public View getDropDownView(int position, View convertView,
                                 ViewGroup parent) {
-        TextView label = new TextView(context);
-        label.setTextColor(Color.BLACK);
-        label.setText(mCities.get(position).getName());
+        return returnSpinnerView(position, convertView);
+    }
 
-        return label;
+    public View returnSpinnerView(int position, View convertView){
+        if(convertView == null) {
+            LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(R.layout.spin_adapter, null);
+
+            TextView tvItem = (TextView)convertView.findViewById(R.id.spin_adapter_tv_item);
+            tvItem.setText(mCities.get(position).getName());
+        }
+
+        // And finally return your dynamic (or custom) view for each spinner item
+        return convertView;
     }
 
 }

@@ -8,8 +8,6 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -58,14 +56,11 @@ public class MainActivity extends AppCompatActivity {
 
             mCities = Arrays.asList(gson.fromJson(new String(b), City[].class));
 
-            mCitiesAdapter = new SpinAdapter(this, R.layout.content_main, mCities);
+            mCitiesAdapter = new SpinAdapter(this, R.layout.spin_adapter, mCities);
 
             mButtonShowMap = (Button) findViewById(R.id.btnShowInMap);
             mSpinnerCity = (Spinner) findViewById(R.id.citySpinner);
             mSpinnerDestination = (Spinner) findViewById(R.id.destinationsSpinner);
-
-            mSpinnerCity.setPromptId(R.string.select_city);
-            mSpinnerDestination.setPromptId(R.string.select_destination);
 
             mSpinnerCity.setAdapter(mCitiesAdapter);
         } catch (Exception e) {
@@ -76,14 +71,11 @@ public class MainActivity extends AppCompatActivity {
         mSpinnerCity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(MainActivity.this, position, Toast.LENGTH_SHORT).show();
 
-                if(position > 0){
-                    String[] destinations = mCitiesAdapter.getItem(position).getDestinations();
-                    mDestinationsAdapter = new ArrayAdapter<String>(MainActivity.this, R.layout.content_main, destinations);
-                    mDestinationsAdapter.setDropDownViewResource(R.layout.content_main);
-                    mSpinnerDestination.setAdapter(mDestinationsAdapter);
-                }
+                String[] destinations = mCitiesAdapter.getItem(position).getDestinations();
+                mDestinationsAdapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_spinner_item, destinations);
+                mDestinationsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+                mSpinnerDestination.setAdapter(mDestinationsAdapter);
 
             }
 
@@ -97,10 +89,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Uri gmmIntentUri = Uri.parse("geo:0,0?q=1600 Amphitheatre Parkway, Mountain+View, California");
-                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-                mapIntent.setPackage("com.google.android.apps.maps");
-                startActivity(mapIntent);
+                City city = (City) mSpinnerCity.getSelectedItem();
+                String destination = String.valueOf(mSpinnerDestination.getSelectedItem());
+
+                if(mSpinnerCity.getSelectedItemPosition() > 0){
+                    Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + city.getName() + ", " + destination);
+                    Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                    mapIntent.setPackage("com.google.android.apps.maps");
+                    startActivity(mapIntent);
+                }else{
+                    Toast.makeText(MainActivity.this, R.string.error_message, Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
@@ -127,5 +126,4 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 }
