@@ -9,9 +9,7 @@ import android.widget.TextView;
 
 import com.example.darielcruzhdez.tourismapp.main.models.City;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -25,10 +23,10 @@ public class SpinAdapter extends ArrayAdapter<City> {
     private List<City> mCities = new ArrayList<>();
 
     public SpinAdapter(Context context, int textViewResourceId,
-                       City[] values){
+                       List<City> values){
         super(context, textViewResourceId, values);
         this.context = context;
-        this.mCities = Arrays.asList(values);
+        this.mCities = values;
     }
 
     public void add(City item) {
