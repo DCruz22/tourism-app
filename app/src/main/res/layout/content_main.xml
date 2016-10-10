@@ -23,7 +23,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/citySpinner"
         android:prompt="@string/select_city"
-        android:layout_below="@+id/txtCity"/>
+        android:layout_below="@+id/txtCity"
+        android:layout_marginBottom="15dp"/>
 
     <TextView
         android:id="@+id/txtDestination"
@@ -36,8 +37,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/destinationsSpinner"
-        android:prompt="@string/select-place"
-        android:layout_below="@+id/txtDestination"/>
+        android:prompt="@string/select_destination"
+        android:layout_below="@+id/txtDestination"
+        android:layout_marginBottom="15dp"/>
 
 
     <Button
