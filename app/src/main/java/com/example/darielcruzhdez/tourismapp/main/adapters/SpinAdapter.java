@@ -86,13 +86,12 @@ public class SpinAdapter extends ArrayAdapter<City> {
     }
 
     public View returnSpinnerView(int position, View convertView){
-        if(convertView == null) {
-            LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.spin_adapter, null);
+        LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-            TextView tvItem = (TextView)convertView.findViewById(R.id.spin_adapter_tv_item);
-            tvItem.setText(mCities.get(position).getName());
-        }
+        convertView = inflater.inflate(R.layout.spin_adapter, null);
+
+        TextView tvItem = (TextView)convertView.findViewById(R.id.spin_adapter_tv_item);
+        tvItem.setText(mCities.get(position).getName());
 
         // And finally return your dynamic (or custom) view for each spinner item
         return convertView;

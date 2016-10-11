@@ -24,6 +24,7 @@ import com.example.darielcruzhdez.tourismapp.R;
 
 import java.io.InputStream;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -55,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
             in_s.read(b);
 
             mCities = Arrays.asList(gson.fromJson(new String(b), City[].class));
+            //Collections.sort(mCities);
 
             mCitiesAdapter = new SpinAdapter(this, R.layout.spin_adapter, mCities);
 
@@ -72,7 +74,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                String[] destinations = mCitiesAdapter.getItem(position).getDestinations();
+                City city = (City) parent.getSelectedItem();
+                String[] destinations = city.getDestinations();
                 mDestinationsAdapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_spinner_item, destinations);
                 mDestinationsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
                 mSpinnerDestination.setAdapter(mDestinationsAdapter);
@@ -92,12 +95,12 @@ public class MainActivity extends AppCompatActivity {
                 City city = (City) mSpinnerCity.getSelectedItem();
                 String destination = String.valueOf(mSpinnerDestination.getSelectedItem());
 
-                if(mSpinnerCity.getSelectedItemPosition() > 0){
+                if (mSpinnerCity.getSelectedItemPosition() > 0) {
                     Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + city.getName() + ", " + destination);
                     Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
                     mapIntent.setPackage("com.google.android.apps.maps");
                     startActivity(mapIntent);
-                }else{
+                } else {
                     Toast.makeText(MainActivity.this, R.string.error_message, Toast.LENGTH_SHORT).show();
                 }
 
