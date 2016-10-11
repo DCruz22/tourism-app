@@ -1,5 +1,5 @@
 [
-  {"id" : 0 ,"name" : "-- Eliga una provincia --", "destinations" : ["-- Eliga un destino --"]},
+  {"id" : 0 ,"name" : "-- Elija una provincia --", "destinations" : ["-- Elija un destino --"]},
   {"id" : 1 ,"name": "Azua" , "destinations" : ["Playa Blanca", "Playa Tortuguero"]},
   {"id" : 2 ,"name": "Bahoruco" , "destinations" : ["Las Marías", "Villa Jaragua"]},
   {"id" : 3 ,"name": "Barahona" , "destinations" : ["Lago Enriquillo", "Los Patos", "Playa Paraiso"]},
@@ -31,6 +31,6 @@
   {"id" : 29 ,"name": "Santiago" , "destinations" : ["Monumento de Santiago", "Casa de la Cultura", "Gran Teatro del Cibao"]},
   {"id" : 30 ,"name": "Santiago Rodríguez" , "destinations" : ["El Pino", "Sabaneta"]},
   {"id" : 31 ,"name": "Santo Domingo" , "destinations" : ["Faro a Colón", "Boca Chica", "Mirador del Norte"]},
-  {"id" : 32 ,"name": "Valverde" , "destinations" : ["Paso de los Hidalgos"]}
+  {"id" : 32 ,"name": "Valverde" , "destinations" : ["Parque Amado Franco Bido"]}
 
 ]
