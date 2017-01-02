@@ -1,11 +1,10 @@
 package com.example.darielcruzhdez.tourismapp.main.activities;
 
+import com.example.darielcruzhdez.tourismapp.main.utils.Parser;
 import com.example.darielcruzhdez.tourismapp.main.adapters.SpinAdapter;
 import com.example.darielcruzhdez.tourismapp.main.models.City;
-import com.google.gson.Gson;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -22,14 +21,11 @@ import android.widget.Toast;
 
 import com.example.darielcruzhdez.tourismapp.R;
 
-import java.io.InputStream;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final static String TAG = "MainActivity";
+    private final static String TAG = MainActivity.class.getCanonicalName();
 
     private Spinner mSpinnerCity, mSpinnerDestination;
     private Button mButtonShowMap;
@@ -46,27 +42,22 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Gson gson = new Gson();
-
         try {
-            Resources res = getResources();
-            InputStream in_s = res.openRawResource(R.raw.locations);
 
-            byte[] b = new byte[in_s.available()];
-            in_s.read(b);
+            if ((mCities = Parser.getCitiesFromJson(this)) != null) {
 
-            mCities = Arrays.asList(gson.fromJson(new String(b), City[].class));
-            //Collections.sort(mCities);
+                mCitiesAdapter = new SpinAdapter(this, R.layout.spin_adapter, mCities);
 
-            mCitiesAdapter = new SpinAdapter(this, R.layout.spin_adapter, mCities);
+                mButtonShowMap = (Button) findViewById(R.id.btnShowInMap);
+                mSpinnerCity = (Spinner) findViewById(R.id.citySpinner);
+                mSpinnerDestination = (Spinner) findViewById(R.id.destinationsSpinner);
 
-            mButtonShowMap = (Button) findViewById(R.id.btnShowInMap);
-            mSpinnerCity = (Spinner) findViewById(R.id.citySpinner);
-            mSpinnerDestination = (Spinner) findViewById(R.id.destinationsSpinner);
+                mSpinnerCity.setAdapter(mCitiesAdapter);
+            }else{
+                throw new Exception("Couldn't parse the json Data");
+            }
 
-            mSpinnerCity.setAdapter(mCitiesAdapter);
         } catch (Exception e) {
-            // e.printStackTrace();
             Log.i(TAG, e.getLocalizedMessage());
         }
 
