@@ -1,5 +1,6 @@
 package com.example.darielcruzhdez.tourismapp.main.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,14 +20,14 @@ import java.util.List;
 public class SpinAdapter extends ArrayAdapter<City> {
 
     // Your sent context
-    private Context context;
+    private Context mContext;
     // Your custom values for the spinner (User)
     private List<City> mCities = new ArrayList<>();
 
     public SpinAdapter(Context context, int textViewResourceId,
                        List<City> values){
         super(context, textViewResourceId, values);
-        this.context = context;
+        this.mContext = context;
         this.mCities = values;
     }
 
@@ -69,9 +70,7 @@ public class SpinAdapter extends ArrayAdapter<City> {
 
     @Override
     public long getItemId(int pos) {
-
         return pos;
-
     }
 
     @Override
@@ -86,15 +85,35 @@ public class SpinAdapter extends ArrayAdapter<City> {
     }
 
     public View returnSpinnerView(int position, View convertView){
-        LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        ViewHolderItem holder;
 
-        convertView = inflater.inflate(R.layout.spin_adapter, null);
+        if(convertView == null){
+            LayoutInflater inflater = ((Activity)mContext).getLayoutInflater();
+            convertView = inflater.inflate(R.layout.spin_adapter, null);
 
-        TextView tvItem = (TextView)convertView.findViewById(R.id.spin_adapter_tv_item);
-        tvItem.setText(mCities.get(position).getName());
+            holder = new ViewHolderItem();
+            holder.cityNameTV = (TextView) convertView.findViewById(R.id.spin_adapter_tv_item);
 
-        // And finally return your dynamic (or custom) view for each spinner item
+//            TextView tvItem = (TextView)convertView.findViewById(R.id.spin_adapter_tv_item);
+//            tvItem.setText(mCities.get(position).getName());
+            convertView.setTag(holder);
+
+        }else {
+            holder = (ViewHolderItem)convertView.getTag();
+        }
+
+        City item = mCities.get(position);
+
+        if(item != null){
+            holder.cityNameTV.setText(item.getName());
+            holder.cityNameTV.setTag(item.getId());
+        }
+
         return convertView;
+    }
+
+    public static class ViewHolderItem{
+        TextView cityNameTV;
     }
 
 }
