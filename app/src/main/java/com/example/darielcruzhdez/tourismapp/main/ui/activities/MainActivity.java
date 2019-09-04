@@ -1,4 +1,4 @@
-package com.example.darielcruzhdez.tourismapp.main.activities;
+package com.example.darielcruzhdez.tourismapp.main.ui.activities;
 
 import com.example.darielcruzhdez.tourismapp.main.utils.Parser;
 import com.example.darielcruzhdez.tourismapp.main.adapters.SpinAdapter;
@@ -29,9 +29,12 @@ public class MainActivity extends AppCompatActivity {
 
     private Spinner mSpinnerCity, mSpinnerDestination;
     private Button mButtonShowMap;
+    private ViewPager mViewPager;
+    private TabLayout mTab;
 
     private static List<City> mCities;
 
+    private TourismPageAdapter mPageAdapter;
     private SpinAdapter mCitiesAdapter;
     private ArrayAdapter<String> mDestinationsAdapter;
 
@@ -41,6 +44,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        mViewPager = (ViewPager) findViewById(R.id.pager);
+        mTab = (TabLayout) findViewById(R.id.tab_layout);
+
+        mPageAdapter = new TourismPageAdapter(getSupportFragmentAdapter());
+        mPageAdapter.addFragment(new CitiesFragment(), R.string.cities_page_title)
+        mPageAdapter.addFragment(new DestinationsFragment(), R.string.destinations_page_title)
+
+        mViewPager.setAdapter(mPageAdapter);
+        mTab.setupWithViewPager(mViewPager);
 
         try {
 
