@@ -8,48 +8,12 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".main.activities.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <TextView
-        android:id="@+id/txtCity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/city"/>
-
-    <Spinner
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/pager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/citySpinner"
-        android:layout_below="@+id/txtCity"
-        android:layout_marginBottom="15dp"
-        android:background="@android:color/darker_gray"/>
-
-    <TextView
-        android:id="@+id/txtDestination"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/destination"
-        android:layout_below="@+id/citySpinner"/>
-
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/destinationsSpinner"
-        android:layout_below="@+id/txtDestination"
-        android:layout_marginBottom="15dp"
-        android:background="@android:color/darker_gray"/>
-
-
-    <Button
-        android:id="@+id/btnShowInMap"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/show_map"
-        android:background="@android:color/holo_green_dark"
-        android:textColor="@android:color/white"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"/>
+        android:layout_height="match_parent" />
 
 </RelativeLayout>
