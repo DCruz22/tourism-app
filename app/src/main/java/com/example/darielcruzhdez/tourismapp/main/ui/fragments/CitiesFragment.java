@@ -8,9 +8,20 @@ import android.view.ViewGroup;
 
 public class CitiesFragment extends Fragment {
 
+    private List<City> cities;
+    private RecyclerView citiesRV;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_cities, container, false);
+        
+        citiesRV = (RecyclerView) findViewById(R.id.citiesRV);
+
+        cities = new ArrayList<>();
+
+        CitiesAdapter adapter = new CitiesAdapter(cities);        
+        citiesRV.setAdapter(adapter);
+        citiesRV.setLayoutManager(new LinearLayoutManager(this));
     }
 
 }

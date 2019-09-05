@@ -55,61 +55,10 @@ public class MainActivity extends AppCompatActivity {
         mViewPager.setAdapter(mPageAdapter);
         mTab.setupWithViewPager(mViewPager);
 
-        try {
-
-            if ((mCities = Parser.getCitiesFromJson(this)) != null) {
-
-                mCitiesAdapter = new SpinAdapter(this, R.layout.spin_adapter, mCities);
-
-                mButtonShowMap = (Button) findViewById(R.id.btnShowInMap);
-                mSpinnerCity = (Spinner) findViewById(R.id.citySpinner);
-                mSpinnerDestination = (Spinner) findViewById(R.id.destinationsSpinner);
-
-                mSpinnerCity.setAdapter(mCitiesAdapter);
-            }else{
-                throw new Exception("Couldn't parse the json Data");
-            }
-
-        } catch (Exception e) {
-            Log.i(TAG, e.getLocalizedMessage());
-        }
-
-        mSpinnerCity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                City city = (City) parent.getSelectedItem();
-                String[] destinations = city.getDestinations();
-                mDestinationsAdapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_spinner_item, destinations);
-                mDestinationsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
-                mSpinnerDestination.setAdapter(mDestinationsAdapter);
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        mButtonShowMap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                City city = (City) mSpinnerCity.getSelectedItem();
-                String destination = String.valueOf(mSpinnerDestination.getSelectedItem());
-
-                if (mSpinnerCity.getSelectedItemPosition() > 0) {
-                    Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + city.getName() + ", " + destination);
-                    Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-                    mapIntent.setPackage("com.google.android.apps.maps");
-                    startActivity(mapIntent);
-                } else {
-                    Toast.makeText(MainActivity.this, R.string.error_message, Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        });
+        /*  Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + city.getName() + ", " + destination);
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        startActivity(mapIntent);*/
     }
 
     @Override
