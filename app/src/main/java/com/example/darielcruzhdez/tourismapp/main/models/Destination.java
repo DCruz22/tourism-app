@@ -5,11 +5,10 @@ import java.util.List;
 /**
  * Created by darielcruzhdez on 10/3/16.
  */
-public class City {
+public class Destination {
 
     private int id;
     private String name;
-    private List<Destination> destinations = new ArrayList<>();
 
     public int getId() {
         return id;
@@ -25,14 +24,6 @@ public class City {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public List<Destination> getDestinations() {
-        return destinations;
-    }
-
-    public void setDestinations(List<Destination> destinations) {
-        this.destinations = destinations;
     }
 
 }
