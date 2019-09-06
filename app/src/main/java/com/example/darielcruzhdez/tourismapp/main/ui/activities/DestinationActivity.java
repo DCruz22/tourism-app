@@ -35,6 +35,10 @@ public class DestinationActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.fav_destinations_frame, new DestinationFragments());
+        ft.commit();
+
     }
 
     @Override
