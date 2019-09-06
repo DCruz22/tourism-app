@@ -1,4 +1,4 @@
-package com.example.darielcruzhdez.tourismapp.main.models;
+package com.example.darielcruzhdez.tourismapp.main.model;
 
 import java.util.List;
 
