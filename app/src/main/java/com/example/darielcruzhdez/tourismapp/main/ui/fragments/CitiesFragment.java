@@ -1,10 +1,19 @@
 package com.example.darielcruzhdez.tourismapp.main.ui.fragments;
 
 import android.os.Bundle;
-import android.support.v7.app.Fragment;
+import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.darielcruzhdez.tourismapp.R;
+import com.example.darielcruzhdez.tourismapp.main.models.City;
+import com.example.darielcruzhdez.tourismapp.main.adapters.CitiesAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CitiesFragment extends Fragment {
 
@@ -21,12 +30,12 @@ public class CitiesFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_cities, container, false);
-        
-        mCitiesRV = (RecyclerView) findViewById(R.id.citiesRV);
+        mCitiesRV = container.findViewById(R.id.citiesRV);
 
         mCitiesRV.setAdapter(mAdapter);
-        mCitiesRV.setLayoutManager(new LinearLayoutManager(this));
+        mCitiesRV.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        return inflater.inflate(R.layout.fragment_cities, container, false);
     }
 
 }

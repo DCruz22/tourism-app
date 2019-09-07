@@ -1,5 +1,8 @@
 package com.example.darielcruzhdez.tourismapp.main.models;
 
+import com.example.darielcruzhdez.tourismapp.main.model.Destination;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**

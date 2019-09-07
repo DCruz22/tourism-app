@@ -1,14 +1,14 @@
 package com.example.darielcruzhdez.tourismapp.main.adapters;
 
 import android.support.annotation.Nullable;
-import android.support.v7.app.Fragment;
-import android.support.v7.app.FragmentManager;
-import android.support.v7.app.FragmentStatePagerAdapter;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public TourismPageAdapter extends FragmentPagerAdapter{
-    private final List<Fragments> mFragmentList = new ArrayList<>();
+public class TourismPageAdapter extends FragmentPagerAdapter {
+    private final List<Fragment> mFragmentList = new ArrayList<>();
     private final List<String> mFragmentTitleList = new ArrayList<>();
 
     public TourismPageAdapter(FragmentManager fm){

@@ -1,25 +1,27 @@
 package com.example.darielcruzhdez.tourismapp.main.ui.activities;
 
-import com.example.darielcruzhdez.tourismapp.main.utils.Parser;
-import com.example.darielcruzhdez.tourismapp.main.adapters.SpinAdapter;
+import com.example.darielcruzhdez.tourismapp.main.adapters.CitiesAdapter;
+import com.example.darielcruzhdez.tourismapp.main.adapters.TourismPageAdapter;
 import com.example.darielcruzhdez.tourismapp.main.models.City;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.darielcruzhdez.tourismapp.R;
+import com.example.darielcruzhdez.tourismapp.main.ui.fragments.CitiesFragment;
+import com.example.darielcruzhdez.tourismapp.main.ui.fragments.DestinationsFragment;
 
 import java.util.List;
 
@@ -35,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private static List<City> mCities;
 
     private TourismPageAdapter mPageAdapter;
-    private SpinAdapter mCitiesAdapter;
+    private CitiesAdapter mCitiesAdapter;
     private ArrayAdapter<String> mDestinationsAdapter;
 
     @Override
@@ -48,9 +50,9 @@ public class MainActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mTab = (TabLayout) findViewById(R.id.tab_layout);
 
-        mPageAdapter = new TourismPageAdapter(getSupportFragmentAdapter());
-        mPageAdapter.addFragment(new CitiesFragment(), R.string.cities_page_title)
-        mPageAdapter.addFragment(new DestinationsFragment(), R.string.destinations_page_title)
+        mPageAdapter = new TourismPageAdapter(getSupportFragmentManager());
+        mPageAdapter.addFragment(new CitiesFragment(), getString(R.string.cities_page_title));
+        mPageAdapter.addFragment(new DestinationsFragment(), getString(R.string.destinations_page_title));
 
         mViewPager.setAdapter(mPageAdapter);
         mTab.setupWithViewPager(mViewPager);

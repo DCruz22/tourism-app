@@ -1,17 +1,15 @@
 package com.example.darielcruzhdez.tourismapp.main.adapters;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
 import com.example.darielcruzhdez.tourismapp.R;
 import com.example.darielcruzhdez.tourismapp.main.models.City;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,14 +18,14 @@ import java.util.List;
 public class CitiesAdapter extends RecyclerView.Adapter<CitiesAdapter.ViewHolder> {
 
     // Your custom values for the spinner (User)
-    private List<City> mCities = new ArrayList<>();
+    private List<City> mCities;
 
-    public DestinationAdapter(List<City> values){
+    public CitiesAdapter(List<City> values){
         this.mCities = values;
     }
 
     @Override
-    public int getItemsCount() {
+    public int getItemCount() {
         return mCities.size();
     }
 
@@ -36,17 +34,17 @@ public class CitiesAdapter extends RecyclerView.Adapter<CitiesAdapter.ViewHolder
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
-        View destinationView = inflater.inflate(R.layout.city_items, parent, false);
+        View destinationView = inflater.inflate(R.layout.cities_items, parent, false);
 
         return new ViewHolder(destinationView);
     }
 
     @Override
-    public void onBindViewHolder(DestinationAdapter.ViewHolder viewHolder, int position){
+    public void onBindViewHolder(CitiesAdapter.ViewHolder viewHolder, int position){
         City city = mCities.get(position);
 
         TextView tv = viewHolder.cityTv;
-        tv.setText(city.name);
+        tv.setText(city.getName());
     }
  
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -55,9 +53,9 @@ public class CitiesAdapter extends RecyclerView.Adapter<CitiesAdapter.ViewHolder
 
         public ViewHolder(View itemView) {
             super(itemView);
-            destinationTv = (TextView) itemView.findViewById(R.id.text_city);
+            cityTv = itemView.findViewById(R.id.text_city);
         }
     }
 }
 
-}
+
