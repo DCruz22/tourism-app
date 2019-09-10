@@ -44,11 +44,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mViewPager = (ViewPager) findViewById(R.id.pager);
-        mTab = (TabLayout) findViewById(R.id.tab_layout);
+        mViewPager = findViewById(R.id.pager);
+        mTab = findViewById(R.id.tab_layout);
 
         mPageAdapter = new TourismPageAdapter(getSupportFragmentManager());
         mPageAdapter.addFragment(new CitiesFragment(), getString(R.string.cities_page_title));
@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
         mapIntent.setPackage("com.google.android.apps.maps");
         startActivity(mapIntent);*/
+
     }
 
     @Override

@@ -30,12 +30,12 @@ public class CitiesFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mCitiesRV = container.findViewById(R.id.citiesRV);
+        View view = inflater.inflate(R.layout.fragment_cities, container, false);
+        mCitiesRV = view.findViewById(R.id.citiesRV);
 
         mCitiesRV.setAdapter(mAdapter);
         mCitiesRV.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-        return inflater.inflate(R.layout.fragment_cities, container, false);
+        return view;
     }
 
 }

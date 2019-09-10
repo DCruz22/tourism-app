@@ -30,14 +30,14 @@ public class DestinationsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mDestinationsRV = (RecyclerView) container.findViewById(R.id.destinationsRV);
+        View view = inflater.inflate(R.layout.fragment_destinations, container, false);
+        mDestinationsRV = view.findViewById(R.id.destinationsRV);
 
         mDestinations = new ArrayList<>();
 
         mDestinationsRV.setAdapter(mAdapter);
         mDestinationsRV.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-        return inflater.inflate(R.layout.fragment_cities, container, false);
+        return view;
     }
 
  }
