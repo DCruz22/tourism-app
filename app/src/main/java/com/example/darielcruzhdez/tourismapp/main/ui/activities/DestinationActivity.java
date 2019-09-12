@@ -1,27 +1,14 @@
 package com.example.darielcruzhdez.tourismapp.main.ui.activities;
 
-import com.example.darielcruzhdez.tourismapp.main.utils.Parser;
-import com.example.darielcruzhdez.tourismapp.main.adapters.SpinAdapter;
-import com.example.darielcruzhdez.tourismapp.main.models.City;
+import com.example.darielcruzhdez.tourismapp.main.ui.fragments.DestinationsFragment;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.example.darielcruzhdez.tourismapp.R;
-
-import java.util.List;
 
 public class DestinationActivity extends AppCompatActivity {
 
@@ -32,13 +19,10 @@ public class DestinationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_destination);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.fav_destinations_frame, new DestinationFragments());
+        ft.replace(R.id.fav_destinations_frame, new DestinationsFragment());
         ft.commit();
-
     }
 
     @Override
@@ -59,5 +43,7 @@ public class DestinationActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+
+        return super.onOptionsItemSelected(item);
     }
 }

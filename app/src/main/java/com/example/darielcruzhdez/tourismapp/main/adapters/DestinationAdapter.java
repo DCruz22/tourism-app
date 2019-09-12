@@ -1,17 +1,16 @@
 package com.example.darielcruzhdez.tourismapp.main.adapters;
 
-import android.app.Activity;
 import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.darielcruzhdez.tourismapp.R;
-import com.example.darielcruzhdez.tourismapp.main.models.Destination;
+import com.example.darielcruzhdez.tourismapp.main.model.Destination;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,15 +18,14 @@ import java.util.List;
  */
 public class DestinationAdapter extends RecyclerView.Adapter<DestinationAdapter.ViewHolder> {
 
-    // Your custom values for the spinner (User)
-    private List<Destination> mDestinations = new ArrayList<>();
+    private List<Destination> mDestinations;
 
-    public DestinationAdapter(List<City> values){
+    public DestinationAdapter(List<Destination> values){
         this.mDestinations = values;
     }
 
     @Override
-    public int getItemsCount() {
+    public int getItemCount() {
         return mDestinations.size();
     }
 
@@ -46,7 +44,7 @@ public class DestinationAdapter extends RecyclerView.Adapter<DestinationAdapter.
         Destination destination = mDestinations.get(position);
 
         TextView tv = viewHolder.destinationTv;
-        tv.setText(destination.name);
+        tv.setText(destination.getName());
     }
  
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -56,10 +54,8 @@ public class DestinationAdapter extends RecyclerView.Adapter<DestinationAdapter.
 
         public ViewHolder(View itemView) {
             super(itemView);
-            destinationTv = (TextView) itemView.findViewById(R.id.text_destination);
-            bookmarkIv = (ImageView) itemView.findViewById(R.id.image_bookmark);
+            destinationTv = itemView.findViewById(R.id.text_destination);
+            bookmarkIv = itemView.findViewById(R.id.image_bookmark);
         }
     }
-}
-
 }
