@@ -17,11 +17,17 @@ import java.util.List;
  */
 public class CitiesAdapter extends RecyclerView.Adapter<CitiesAdapter.ViewHolder> {
 
+    public interface Listener {
+        void onItemClicked(City item);
+    }
+
     // Your custom values for the spinner (User)
     private List<City> mCities;
+    private Listener mListener;
 
-    public CitiesAdapter(List<City> values){
+    public CitiesAdapter(List<City> values, Listener listener){
         this.mCities = values;
+        this.mListener = listener;
     }
 
     @Override
@@ -41,10 +47,11 @@ public class CitiesAdapter extends RecyclerView.Adapter<CitiesAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(CitiesAdapter.ViewHolder viewHolder, int position){
-        City city = mCities.get(position);
+        final City city = mCities.get(position);
 
         TextView tv = viewHolder.cityTv;
         tv.setText(city.getName());
+        viewHolder.cityTv.setOnClickListener(v -> mListener.onItemClicked(city));
     }
  
     public class ViewHolder extends RecyclerView.ViewHolder {
