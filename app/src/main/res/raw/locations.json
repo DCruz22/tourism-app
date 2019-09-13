@@ -12,7 +12,7 @@
   {"id" : 11 ,"name": "Hermanas Mirabal" , "destinations" : [{"id":24,"name":"La Casa Museo Hermanas Mirabal"}, {"id":25,"name":"El Jardín Memorial Casa de Patria"}]},
   {"id" : 12 ,"name": "Independencia" , "destinations" : [{"id":26,"name":"Las Barias"}, {"id":27,"name":"isla Cabritos"}]},
   {"id" : 13 ,"name": "La Altagracia" , "destinations" : [{"id":28,"name":"Uvero Alto"}, {"id":29,"name":"Isla Saona"}, {"id":30,"name":"Scape Park"}, {"id":31,"name":"Bavaro"}, {"id":32,"name":"Playa Macao"}]},
-  {"id" : 14 ,"name": "La Romana" , "destinations" : [{"id":33,"name":"Altos de Chavon"}, {"id":34,"destinations":"Playa Bayahibe"}]},
+  {"id" : 14 ,"name": "La Romana" , "destinations" : [{"id":33,"name":"Altos de Chavon"}, {"id":34,"name":"Playa Bayahibe"}]},
   {"id" : 15 ,"name": "La Vega" , "destinations" : [{"id":35,"name":"EL Tabacal"}]},
   {"id" : 16 ,"name": "María Trinidad Sánchez" , "destinations" : [{"id":36,"name":"Laguna Dudu"}]},
   {"id" : 17 ,"name": "Monseñor Nouel" , "destinations" : [{"id":37,"name":"El Salto de Lima"}]},

@@ -15,7 +15,7 @@ import com.example.darielcruzhdez.tourismapp.main.models.City;
 import com.example.darielcruzhdez.tourismapp.main.adapters.CitiesAdapter;
 import com.example.darielcruzhdez.tourismapp.main.presenters.CityPresenter;
 import com.example.darielcruzhdez.tourismapp.main.ui.activities.DestinationActivity;
-import com.example.darielcruzhdez.tourismapp.main.utils.CitiesRepo;
+import com.example.darielcruzhdez.tourismapp.main.repos.CitiesRepo;
 
 import java.util.List;
 
@@ -46,6 +46,12 @@ public class CitiesFragment extends Fragment implements CityInterface.View {
     }
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mPresenter = null;
+    }
+
+    @Override
     public void setAdapter(List<City> cities) {
         mAdapter = new CitiesAdapter(cities, mPresenter::onItemClicked);
     }
@@ -59,7 +65,7 @@ public class CitiesFragment extends Fragment implements CityInterface.View {
     @Override
     public void showDestinationActivity(City city) {
         Intent i = new Intent(getActivity(), DestinationActivity.class);
-        i.putExtra("CITY", city.getId());
+        i.putExtra("CITY_NAME", city.getName());
         startActivity(i);
     }
 }

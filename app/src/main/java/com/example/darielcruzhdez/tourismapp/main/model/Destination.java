@@ -1,14 +1,15 @@
 package com.example.darielcruzhdez.tourismapp.main.model;
 
-import java.util.List;
+import io.realm.RealmObject;
 
 /**
  * Created by darielcruzhdez on 10/3/16.
  */
-public class Destination {
+public class Destination extends RealmObject {
 
     private int id;
     private String name;
+    private String cityName;
 
     public int getId() {
         return id;
@@ -24,6 +25,14 @@ public class Destination {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String name) {
+        this.cityName = name;
     }
 
 }

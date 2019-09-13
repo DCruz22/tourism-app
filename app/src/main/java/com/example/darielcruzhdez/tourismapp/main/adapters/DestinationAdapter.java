@@ -18,10 +18,22 @@ import java.util.List;
  */
 public class DestinationAdapter extends RecyclerView.Adapter<DestinationAdapter.ViewHolder> {
 
-    private List<Destination> mDestinations;
+    public interface ClickListener {
+        void onItemClicked(Destination item);
+    }
 
-    public DestinationAdapter(List<Destination> values){
+    public interface ImageListener {
+        void onBookmarkImgClicked(Destination item);
+    }
+
+    private List<Destination> mDestinations;
+    private ClickListener mClickListener;
+    private ImageListener mImgListener;
+
+    public DestinationAdapter(List<Destination> values, ClickListener clickListener, ImageListener imageListener){
         this.mDestinations = values;
+        this.mClickListener = clickListener;
+        this.mImgListener = imageListener;
     }
 
     @Override
@@ -45,6 +57,8 @@ public class DestinationAdapter extends RecyclerView.Adapter<DestinationAdapter.
 
         TextView tv = viewHolder.destinationTv;
         tv.setText(destination.getName());
+        tv.setOnClickListener(v -> mClickListener.onItemClicked(destination));
+        viewHolder.bookmarkIv.setOnClickListener(v -> mImgListener.onBookmarkImgClicked(destination));
     }
  
     public class ViewHolder extends RecyclerView.ViewHolder {

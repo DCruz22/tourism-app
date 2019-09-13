@@ -2,7 +2,7 @@ package com.example.darielcruzhdez.tourismapp.main.presenters;
 
 import com.example.darielcruzhdez.tourismapp.main.interfaces.CityInterface;
 import com.example.darielcruzhdez.tourismapp.main.models.City;
-import com.example.darielcruzhdez.tourismapp.main.utils.CitiesRepo;
+import com.example.darielcruzhdez.tourismapp.main.repos.CitiesRepo;
 
 public class CityPresenter implements CityInterface.Presenter {
 

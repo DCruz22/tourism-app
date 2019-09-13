@@ -48,12 +48,6 @@ public class MainActivity extends AppCompatActivity {
 
         mViewPager.setAdapter(mPageAdapter);
         mTab.setupWithViewPager(mViewPager);
-
-        /*  Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + city.getName() + ", " + destination);
-        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-        mapIntent.setPackage("com.google.android.apps.maps");
-        startActivity(mapIntent);*/
-
     }
 
     @Override

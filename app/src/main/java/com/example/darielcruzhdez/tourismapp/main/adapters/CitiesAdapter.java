@@ -21,7 +21,6 @@ public class CitiesAdapter extends RecyclerView.Adapter<CitiesAdapter.ViewHolder
         void onItemClicked(City item);
     }
 
-    // Your custom values for the spinner (User)
     private List<City> mCities;
     private Listener mListener;
 
