@@ -29,7 +29,7 @@ public class DestinationsFragment extends Fragment implements DestinationInterfa
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPresenter = new DestinationPresenter(this, new CitiesRepo(getActivity()));
+        mPresenter = new DestinationPresenter(this, new CitiesRepo(getActivity(), new DestinationsRepo()));
     }
 
     @Override

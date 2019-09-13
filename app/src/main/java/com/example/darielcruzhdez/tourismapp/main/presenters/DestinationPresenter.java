@@ -8,11 +8,13 @@ public class DestinationPresenter implements DestinationInterface.Presenter {
 
     private DestinationInterface.View mView;
     private CitiesRepo mCitiesRepo;
+    private DestinationsRepo mDestinationsRepo;
     private String cityName;
 
-    public DestinationPresenter(DestinationInterface.View view, CitiesRepo citiesRepo){
-        mView = view;
-        mCitiesRepo = citiesRepo;
+    public DestinationPresenter(DestinationInterface.View view, CitiesRepo citiesRepo, DestinationsRepo destinationsRepo){
+        this.mView = view;
+        this.mCitiesRepo = citiesRepo;
+        this.mDestinationsRepo = destinationsRepo;
     }
 
     @Override
@@ -28,12 +30,16 @@ public class DestinationPresenter implements DestinationInterface.Presenter {
         if(cityName != null)
             destination.setCityName(cityName);
 
-        mView.showMessage("");
+        int result =   mCitiesRepo.bookmarkDestination(destination);
+
+        String msg = result == 0 ? "Added to Bookmarks" ; "Removed from Bookmarks";
+
+        mView.showMessage(msg);
     }
 
     @Override
     public void loadBookmarkedDestinations() {
-        //mView.setAdapter(new List<Destination>());
+        mView.setAdapter(mDestinationsRepo.findAll());
     }
 
     @Override
@@ -53,6 +59,6 @@ public class DestinationPresenter implements DestinationInterface.Presenter {
 
     @Override
     public void onDestroy() {
-
+        mDestinationsRepo.close();
     }
 }
