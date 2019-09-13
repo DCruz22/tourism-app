@@ -5,6 +5,7 @@
     android:elevation="10dp"
     card_view:cardCornerRadius="8dp"
     android:layout_marginBottom="5dp"
+    android:paddingStart="10dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto">
 
@@ -23,15 +24,20 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true" />
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@id/text_destination"
+            android:layout_alignParentEnd="true"
+            android:orientation="vertical">
             <ImageView
             android:layout_width="20dp"
             android:layout_height="wrap_content"
+                android:clickable="true"
                 android:src="@drawable/ic_bookmark"
             android:id="@+id/image_bookmark"
-                android:layout_toRightOf="@id/text_destination"
-                android:layout_toEndOf="@id/text_destination"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true" />
+                android:layout_marginEnd="0dp" />
+        </LinearLayout>
 
     </RelativeLayout>
 
