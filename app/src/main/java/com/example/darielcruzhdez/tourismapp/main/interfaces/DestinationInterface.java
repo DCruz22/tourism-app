@@ -8,6 +8,7 @@ import java.util.List;
 public interface DestinationInterface {
     interface View{
         void setAdapter(List<Destination> items);
+        void updateAdapter(List<Destination> items);
         void showAdapter();
         void openLocation(Destination destination);
         void showMessage(String message);

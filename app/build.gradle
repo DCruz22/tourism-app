@@ -1,11 +1,13 @@
 apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
+
 
 android {
     compileSdkVersion 26
 
     defaultConfig {
         applicationId "com.example.darielcruzhdez.tourismapp"
-        minSdkVersion 14
+        minSdkVersion 24
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"

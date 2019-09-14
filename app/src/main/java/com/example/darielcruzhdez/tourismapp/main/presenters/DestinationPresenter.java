@@ -3,6 +3,7 @@ package com.example.darielcruzhdez.tourismapp.main.presenters;
 import com.example.darielcruzhdez.tourismapp.main.interfaces.DestinationInterface;
 import com.example.darielcruzhdez.tourismapp.main.model.Destination;
 import com.example.darielcruzhdez.tourismapp.main.repos.CitiesRepo;
+import com.example.darielcruzhdez.tourismapp.main.repos.DestinationsRepo;
 
 public class DestinationPresenter implements DestinationInterface.Presenter {
 
@@ -27,14 +28,21 @@ public class DestinationPresenter implements DestinationInterface.Presenter {
 
     @Override
     public void onBookmarkImgClicked(Destination destination) {
-        if(cityName != null)
+        boolean isFavTab = true;
+
+        if(cityName != null) {
             destination.setCityName(cityName);
+            isFavTab = false;
+        }
 
-        int result =   mCitiesRepo.bookmarkDestination(destination);
+        int result =   mDestinationsRepo.bookmarkDestination(destination);
 
-        String msg = result == 0 ? "Added to Bookmarks" ; "Removed from Bookmarks";
+        String msg = result == 0 ? "Added to Bookmarks" : "Removed from Bookmarks";
 
         mView.showMessage(msg);
+
+        if(isFavTab)
+            mView.updateAdapter(mDestinationsRepo.findAll());
     }
 
     @Override

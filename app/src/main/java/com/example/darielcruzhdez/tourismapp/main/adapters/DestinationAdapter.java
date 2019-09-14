@@ -60,6 +60,13 @@ public class DestinationAdapter extends RecyclerView.Adapter<DestinationAdapter.
         tv.setOnClickListener(v -> mClickListener.onItemClicked(destination));
         viewHolder.bookmarkIv.setOnClickListener(v -> mImgListener.onBookmarkImgClicked(destination));
     }
+
+    public void setList(List<Destination> items){
+        if(items != null)
+            mDestinations = items;
+
+        notifyDataSetChanged();
+    }
  
     public class ViewHolder extends RecyclerView.ViewHolder {
         

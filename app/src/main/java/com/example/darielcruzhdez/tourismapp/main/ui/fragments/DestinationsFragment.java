@@ -17,6 +17,7 @@ import com.example.darielcruzhdez.tourismapp.main.interfaces.DestinationInterfac
 import com.example.darielcruzhdez.tourismapp.main.model.Destination;
 import com.example.darielcruzhdez.tourismapp.main.presenters.DestinationPresenter;
 import com.example.darielcruzhdez.tourismapp.main.repos.CitiesRepo;
+import com.example.darielcruzhdez.tourismapp.main.repos.DestinationsRepo;
 
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class DestinationsFragment extends Fragment implements DestinationInterfa
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPresenter = new DestinationPresenter(this, new CitiesRepo(getActivity(), new DestinationsRepo()));
+        mPresenter = new DestinationPresenter(this, new CitiesRepo(getActivity()), new DestinationsRepo());
     }
 
     @Override
@@ -63,6 +64,11 @@ public class DestinationsFragment extends Fragment implements DestinationInterfa
     @Override
     public void setAdapter(List<Destination> items) {
         mAdapter = new DestinationAdapter(items, mPresenter::onItemClicked, mPresenter::onBookmarkImgClicked);
+    }
+
+    @Override
+    public void updateAdapter(List<Destination> items) {
+        mAdapter.setList(items);
     }
 
     @Override

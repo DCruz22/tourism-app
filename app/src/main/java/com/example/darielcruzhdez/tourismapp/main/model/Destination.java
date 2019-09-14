@@ -1,12 +1,14 @@
 package com.example.darielcruzhdez.tourismapp.main.model;
 
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by darielcruzhdez on 10/3/16.
  */
 public class Destination extends RealmObject {
 
+    @PrimaryKey
     private int id;
     private String name;
     private String cityName;

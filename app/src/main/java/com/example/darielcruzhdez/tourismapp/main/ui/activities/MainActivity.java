@@ -48,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
 
         mViewPager.setAdapter(mPageAdapter);
         mTab.setupWithViewPager(mViewPager);
+
+        mTab.getTabAt(1).setIcon(R.drawable.ic_tab_favourite);
     }
 
     @Override
